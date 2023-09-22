@@ -1,0 +1,28 @@
+﻿@{
+	string username = User.Identity.Name;
+
+}
+Welcome @username
+@if (User.IsInRole("admin"))
+{
+    <h2>Welcome Admin Only you are accessible to this page</h2>
+	<h3>Choose and Action</h3>
+	<div class="list-group">
+		<ul>
+			<li><a href="@Url.Action("GetAllRoom", "AdminRoom")">Get Room</a></li>
+			<li><a href="@Url.Action("CreateRoom", "AdminRoom")">Create Room</a></li>
+			<li><a href="@Url.Action("GetAllBooking", "AdminRoom")">Booked Room Details</a></li>
+
+	</div>
+}
+@if (User.IsInRole("user"))
+{
+	<h3>Choose an action</h3>
+	<div class="list-group">
+		<ul>
+			<li><a href="@Url.Action("GetRoom", "Dashboard")">Room List</a></li>
+
+
+
+	</div>
+}
